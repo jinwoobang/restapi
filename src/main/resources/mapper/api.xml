@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.demo.api.mapper.ApiMapper">
+    <select id="retrieveOne" parameterType="com.example.demo.dto.TestApiDto" resultType="com.example.demo.dto.TestApiDto">
+        select out_seq, plt_id, src_no, loca_id, picking_cd, spmt_type_cd, spmt_yn
+        from spmt
+        where out_seq = #{outSeq}
+    </select>
+    
+    <select id="retrieveList" resultType="com.example.demo.dto.TestApiDto">
+        select out_seq, plt_id, src_no, loca_id, picking_cd, spmt_type_cd, spmt_yn
+        from spmt        
+    </select>
+    
+    <!--  
+    <insert id="insert" parameterType="com.example.demo.dto.TestApiDto">
+        insert into spmt(out_seq,plt_id,src_no,loca_id,spmt_yn)
+        values(#{outSeq},#{pltId},#{srcNo},#{locaId},#{spmtYn})        
+    </insert>
+    -->
+    
+    <insert id="insert" parameterType="java.util.Map">
+	    INSERT INTO spmt(out_seq, plt_id, src_no, loca_id, spmt_yn, remark)
+	    VALUES
+	    <foreach collection="list" item="dto" separator=",">
+	        (#{dto.outSeq}, #{dto.pltId}, #{dto.srcNo}, #{dto.locaId}, #{map.spmtYn}, #{map.remark})
+	    </foreach>
+	</insert>
+	    
+    
+    <update id="update" parameterType="com.example.demo.dto.TestApiDto">
+        update spmt set src_no = #{srcNo}, loca_id = #{locaId} where out_seq = #{outSeq}        
+    </update>
+    
+    <delete id="delete" parameterType="com.example.demo.dto.TestApiDto">
+       delete from spmt where out_seq = #{outSeq}        
+    </delete>
+</mapper>
+

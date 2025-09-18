@@ -1,0 +1,54 @@
+server:
+  port: 8080
+
+---
+# default
+spring:
+  profiles:
+    include:
+      #- sqlExecutionTimeAspect
+    active: local # default
+    group:
+      local:
+        - path-local
+      dev:
+        - db-dev     
+        - path-server
+      real:
+        - db-ip      
+        - path-server 
+
+
+---
+# local
+spring:
+  config:
+    activate:
+      on-profile: path-local
+
+  datasource:
+    url: jdbc:log4jdbc:sqlserver://192.168.123.183:1433;databaseName=wms_picking_03;encrypt=false;trustServerCertificate=true
+    driver-class-name: net.sf.log4jdbc.sql.jdbcapi.DriverSpy
+    username: wms
+    password: Hdjtm@16589
+    
+  sql:
+    init:
+      platform: mssql
+---
+
+mybatis:
+  configuration:
+    map-underscore-to-camel-case: true        
+---
+     
+mybatis:
+  mapper-locations: classpath:/mapper/*.xml
+
+
+    
+
+
+
+
+
