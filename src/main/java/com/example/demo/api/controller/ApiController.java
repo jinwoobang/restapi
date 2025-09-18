@@ -59,18 +59,32 @@ public class ApiController {
 	    apiService.insert(request);
 	}
 	*/
-	
+
+    /*
 	@PostMapping("/insert")
 	public void insert(@RequestBody @Valid TestApiReq request, BindingResult bindingResult) {
 		if (bindingResult.hasErrors()) {
 	        throw new IllegalArgumentException(bindingResult.getAllErrors().get(0).getDefaultMessage());
 	    }
-		
+
 		Map<String,Object> map = new HashMap<String,Object>();
 		map.put("spmtYn", request.getSpmtYn());
 		map.put("remark", request.getRemark());
 	    apiService.insert(request.getEntity(), map);
 	}
+	*/
+
+    @PostMapping("/insert")
+    public void insert(@RequestBody @Valid TestApiReq request, BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
+            throw new IllegalArgumentException(bindingResult.getAllErrors().get(0).getDefaultMessage());
+        }
+
+        Map<String,Object> map = new HashMap<String,Object>();
+        //map.put("spmtYn", request.getSpmtYn());
+        map.put("remark", request.getRemark());
+        apiService.insert(request.getEntity(), map);
+    }
 	
 	
 	@PutMapping("/update")

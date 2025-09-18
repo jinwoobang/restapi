@@ -19,7 +19,8 @@
         values(#{outSeq},#{pltId},#{srcNo},#{locaId},#{spmtYn})        
     </insert>
     -->
-    
+
+    <!--
     <insert id="insert" parameterType="java.util.Map">
 	    INSERT INTO spmt(out_seq, plt_id, src_no, loca_id, spmt_yn, remark)
 	    VALUES
@@ -27,7 +28,15 @@
 	        (#{dto.outSeq}, #{dto.pltId}, #{dto.srcNo}, #{dto.locaId}, #{map.spmtYn}, #{map.remark})
 	    </foreach>
 	</insert>
-	    
+	 -->
+
+    <insert id="insert" parameterType="java.util.Map">
+        INSERT INTO spmt(out_seq, plt_id, src_no, loca_id, spmt_yn, remark)
+        VALUES
+        <foreach collection="list" item="dto" separator=",">
+            (#{dto.outSeq}, #{dto.pltId}, #{dto.srcNo}, #{dto.locaId}, #{dto.spmtYn}, #{map.remark})
+        </foreach>
+    </insert>
     
     <update id="update" parameterType="com.example.demo.dto.TestApiDto">
         update spmt set src_no = #{srcNo}, loca_id = #{locaId} where out_seq = #{outSeq}        

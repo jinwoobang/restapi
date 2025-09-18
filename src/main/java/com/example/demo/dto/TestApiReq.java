@@ -12,7 +12,7 @@ import lombok.Setter;
 public class TestApiReq {
 	
 	
-	 @NotBlank(message = "spmtYn은 필수입니다")
+
 	 private String spmtYn;	 
 	 private String remark;
 	 
