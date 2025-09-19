@@ -93,7 +93,7 @@ public class ApiController {
 	}
 	
 	@DeleteMapping("/delete")
-	public void delete(TestApiDto dto) {
+	public void delete(@Valid TestApiDto dto) {
 		apiService.delete(dto);		
 	}
 }

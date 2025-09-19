@@ -13,9 +13,6 @@ import com.example.demo.dto.TestApiDto;
 public class ApiService {
 
 	@Autowired
-	private TestApiDto testApiDto;
-	
-	@Autowired
 	private ApiMapper testApiMapper;
 	
 	public TestApiDto retrieve(TestApiDto dto) {

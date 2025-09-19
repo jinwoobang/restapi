@@ -21,7 +21,7 @@ public class TestApiDto {
 	
 	private String locaId;
 	
-	@NotBlank(message = "pickingCd는 필수입니다")
+	//@NotBlank(message = "pickingCd는 필수입니다")
 	@Size(max = 1, message = "pickingCd는 1자리여야 합니다")
 	private String pickingCd;
 	
