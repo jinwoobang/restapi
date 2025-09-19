@@ -23,16 +23,14 @@ public class ApiService {
 		//String seq = testApiDto.getOut_seq();
 		//System.out.println("seq :" + seq);
 		TestApiDto dtoOne = testApiMapper.retrieveOne(dto);
-		
-		//testApiDto.setPltId("방진우");		
+
 		return dtoOne;
 	}
 	
 	public List<TestApiDto> retrieveList() {
 		//testApiDto.setOut_seq("20250827-O00005");
 		List<TestApiDto> dto = testApiMapper.retrieveList();
-		
-		//testApiDto.setPltId("방진우");		
+
 		return dto;
 	}
 	
